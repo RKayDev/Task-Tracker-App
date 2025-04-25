@@ -1,0 +1,8 @@
+.taskpanel-list {
+  align-items: center;
+}
+.taskpanel-item {  
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 0;
+}
