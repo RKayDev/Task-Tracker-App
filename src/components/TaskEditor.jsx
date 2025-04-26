@@ -2,6 +2,7 @@ import "./TaskEditor.css";
 import { useState } from "react";
 
 let herokuURL = "http://192.168.0.106:81";
+herokuURL = 'https://tasktracker-api-75312bd20c21.herokuapp.com';
 
 let TaskEditor = ({onAdd}) => {
   const [formData, setFormData] = useState({
