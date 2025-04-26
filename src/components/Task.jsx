@@ -1,9 +1,7 @@
 import "./Task.css";
 
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-let Task = function ({ title, description }) {
+let Task = function ({ title, description, id, completed, onDone, onDelete }) {
   return (
     <div className="task-card task">
       <div className="row">
@@ -22,19 +20,28 @@ let Task = function ({ title, description }) {
         <div className="col-4 col-xxl-2">
           <div className="row">
             <div className="col-10">
-              <button
-                onClick={() => toast("Task Done!", { type: "success" })}
-                className="btn btn-success btn-lg task-btn"
-              >
-                Done
-              </button>
+              {completed.toString() == "true" ? (
+                <button
+                  onClick={() => onDone(id, false)}
+                  className="btn btn-warning btn-lg task-btn"
+                >
+                  Undone
+                </button>
+              ) : (
+                <button
+                  onClick={() => onDone(id, true)}
+                  className="btn btn-success btn-lg task-btn"
+                >
+                  Done
+                </button>
+              )}
             </div>
           </div>
           <br />
           <div className="row">
             <div className="col-12">
               <button
-                onClick={() => toast("Task Deleted!", { type: "info" })}
+                onClick={() => onDelete(id)}
                 className="btn btn-danger btn-lg task-btn"
               >
                 Delete
@@ -43,7 +50,6 @@ let Task = function ({ title, description }) {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
